@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D6CC0AC265ECD8F003D1C3E /* TimeSeriesMonthlyAdjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6CC0AB265ECD8F003D1C3E /* TimeSeriesMonthlyAdjusted.swift */; };
 		9DEA1375214AFB21D2DCD558 /* Pods_ios_dca_calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A75A3D224FBE1F53EF6954 /* Pods_ios_dca_calculator.framework */; };
 		BDA035422651509E00BA5E7A /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA035412651509E00BA5E7A /* SearchTableViewCell.swift */; };
 		BDA035452651523400BA5E7A /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA035442651523400BA5E7A /* APIService.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D6CC0AB265ECD8F003D1C3E /* TimeSeriesMonthlyAdjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesMonthlyAdjusted.swift; sourceTree = "<group>"; };
 		68A25F247A0232BC19E5556F /* Pods-ios-dca-calculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-dca-calculator.release.xcconfig"; path = "Target Support Files/Pods-ios-dca-calculator/Pods-ios-dca-calculator.release.xcconfig"; sourceTree = "<group>"; };
 		BDA035412651509E00BA5E7A /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		BDA035442651523400BA5E7A /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				BDA035472651675F00BA5E7A /* SearchResults.swift */,
+				4D6CC0AB265ECD8F003D1C3E /* TimeSeriesMonthlyAdjusted.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				BDA035452651523400BA5E7A /* APIService.swift in Sources */,
 				BDA035422651509E00BA5E7A /* SearchTableViewCell.swift in Sources */,
 				BDA9B41C26506D3E003C105E /* AppDelegate.swift in Sources */,
+				4D6CC0AC265ECD8F003D1C3E /* TimeSeriesMonthlyAdjusted.swift in Sources */,
 				BDA035482651675F00BA5E7A /* SearchResults.swift in Sources */,
 				BDA9B41E26506D3E003C105E /* SceneDelegate.swift in Sources */,
 				BDDBE8F3265A9F4E006F06DA /* SearchPlaceholderView.swift in Sources */,
