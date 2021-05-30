@@ -116,27 +116,39 @@ class SearchTableViewController: UITableViewController, UIAnimatable {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let searchResults = self.searchResults {
-            let symbol = searchResults.items[indexPath.row].symbol
-            handleSelection(for: symbol)
+            showLoadingAnimation()
+            let item = searchResults.items[indexPath.row]
+            handleSelection(for: item)
         }
     }
 
-    private func handleSelection(for symbol: String) {
+    private func handleSelection(for item: ResultItems) {
         
-        apiService.fetchTimeSeriesMonthlyAdjustedPublisher(keywords: symbol).sink { result in
+        apiService.fetchTimeSeriesMonthlyAdjustedPublisher(keywords: item.symbol).sink { [weak self] result in
             
             switch result {
             case .failure(let error):
                 print(error)
-            case .finished: break
+            case .finished:
+                self?.hideLoadingAnimation()
+                break
             }
             
-        } receiveValue: { result in
-            print("success: \(result.getMonthInfos())")
+        } receiveValue: { [weak self] (result) in
+            // print("success: \(result.getMonthInfos())")
+            let asset = Asset(searchResult: item, timeSeriesMonthlyAdjusted: result)
+            self?.performSegue(withIdentifier: "showCalculator", sender: asset)
+            
         }.store(in: &subscribers)
 
-        
-        // performSegue(withIdentifier: "showCalculator", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCalculator",
+           let destination = segue.destination as? CalculatorTableViewController,
+           let asset = sender as? Asset {
+            destination.asset = asset
+        }
     }
     
 }
@@ -145,6 +157,8 @@ extension SearchTableViewController: UISearchResultsUpdating, UISearchController
     
     func updateSearchResults(for searchController: UISearchController) {
         // print(searchController.searchBar.text)
+        guard searchController.searchBar.text != nil, self.searchQuery != searchController.searchBar.text else { return }
+        
         self.searchQuery = searchController.searchBar.text
     }
     
