@@ -84,8 +84,8 @@ class CalculatorTableViewController: UITableViewController {
             .CombineLatest($initialInvestmentAmount, $monthlyDollarCostAveragingAmount)
             .sink { [weak self] invAmount, avgAmount in
                 
-                guard let invAmount = invAmount, let avgAmount = avgAmount else { return }
-                let result = self?.dcaService.calculate(initialInvestmentAmount: invAmount.doubleValue, monthlyDollarCostAveragingAmount: avgAmount.doubleValue, initialDateOfInvestmentIndex: 1)
+                guard let invAmount = invAmount, let avgAmount = avgAmount, let initialDateOfInvestmentIndex = self?.initialDateOfInvestmentIndex else { return }
+                let result = self?.dcaService.calculate(initialInvestmentAmount: invAmount.doubleValue, monthlyDollarCostAveragingAmount: avgAmount.doubleValue, initialDateOfInvestmentIndex: initialDateOfInvestmentIndex.item)
                 
                 self?.currentValueLable.text = result?.currentValue.stringValue
                 self?.investmentAmountLabel.text = result?.investmentAmount.stringValue
